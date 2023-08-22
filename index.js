@@ -30,7 +30,7 @@ function oneRound(playerChoice,computerChoice){
    }else if (playerChoice === "rock" && computerChoice ==="scissors"){
     console.log("computer picked scissors : you won")
    }else if (playerChoice === computerChoice){
-    console.log("you both tied")
+    console.log(`you both tied: you picked: ${playerChoice} computer picked: ${computerChoice}`)
 
    }else {
     console.log(`computer picked ${computerChoice} computer wins`)
@@ -41,3 +41,18 @@ function oneRound(playerChoice,computerChoice){
     
 computerChoice()
 oneRound(playerChoice,computerChoice())
+
+function game (){
+    let score = 0
+    if (playerChoice === "paper" && computerChoice ==="rock"){
+        console.log(++score)
+    }else if(playerChoice === "scissors" && computerChoice === "paper"){
+        console.log(++score)
+    }else if (playerChoice === "rock" && computerChoice ==="scissors"){
+        console.log(++score)
+    }
+
+return score
+}
+
+game()
