@@ -23,25 +23,31 @@ if (playerChoice == "rock" ){
 }
 
 function oneRound(playerChoice,computerChoice){
+    score =0
    if (playerChoice === "paper" && computerChoice ==="rock"){
-    console.log(" computer picked rock : you  won")
+    console.log(` computer picked rock : you  won ${++score}`)
    }else if(playerChoice === "scissors" && computerChoice === "paper"){
-    console.log("computer picked paper : You won")
+    console.log(`computer picked paper : You won ${++score}`)
    }else if (playerChoice === "rock" && computerChoice ==="scissors"){
-    console.log("computer picked scissors : you won")
+    console.log(`computer picked scissors : you won ${++score}`)
    }else if (playerChoice === computerChoice){
     console.log(`you both tied: you picked: ${playerChoice} computer picked: ${computerChoice}`)
 
    }else {
-    console.log(`computer picked ${computerChoice} computer wins`)
+    console.log(`computer picked ${computerChoice} computer wins ${++score}`)
    
    }
+   
 }
 
     
 computerChoice()
 oneRound(playerChoice,computerChoice())
 
+
+
+
+/*
 function game (){
     let score = 0
     if (playerChoice === "paper" && computerChoice ==="rock"){
@@ -55,4 +61,4 @@ function game (){
 return score
 }
 
-game()
+game()*/
