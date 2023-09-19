@@ -1,64 +1,49 @@
-//myArray=["rock","paper","scissors"]
-//console.log(myArray[0])
-//myArr =["grapes","bananas","mangos","pears"]
-//randomItem = myArr[Math.floor(Math.random()*myArr.length)]
-//console.log(randomItem)
+const playerText=document.querySelector("#playerText")
+const computerText=document.querySelector("#computerText")
+const resultText=document.querySelector("#resultText")
+const choiceBtns=document.querySelectorAll(".choiceBtn")
 
-function computerChoice(){
-    var compChoice =["rock","paper","scissors"]
-    return randomChoice = compChoice[Math.floor(Math.random()*compChoice.length)]
-    //console.log(randomChoice)
-}
-
-//computerChoice()
-
-let playerChoice= prompt("please pick one :rock,paper,scissors")
-
-if (playerChoice == "rock" ){
-    console.log("you picked:rock ")
-}else if (playerChoice == "paper"){
-    console.log("you picked :paper")
-}else if (playerChoice =="scissors"){
-    console.log("you picked: scissors" )
-}
-
-function oneRound(playerChoice,computerChoice){
-    score =0
-   if (playerChoice === "paper" && computerChoice ==="rock"){
-    console.log(` computer picked rock : you  won ${++score}`)
-   }else if(playerChoice === "scissors" && computerChoice === "paper"){
-    console.log(`computer picked paper : You won ${++score}`)
-   }else if (playerChoice === "rock" && computerChoice ==="scissors"){
-    console.log(`computer picked scissors : you won ${++score}`)
-   }else if (playerChoice === computerChoice){
-    console.log(`you both tied: you picked: ${playerChoice} computer picked: ${computerChoice}`)
-
-   }else {
-    console.log(`computer picked ${computerChoice} computer wins ${++score}`)
-   
-   }
-   
-}
-
+let player;
+let computer;
+let result;
+choiceBtns.forEach(button => {button.addEventListener("click",()=>{
+    player = button.textContent
+    computerTurn()
+    playerText.textContent=`player : ${player}`
+    computerText.textContent=`computer: ${computer}`
+    resultText.textContent=checkWinner()
+})
     
-computerChoice()
-oneRound(playerChoice,computerChoice())
+});
 
+function computerTurn(){
+    const randomNum= Math.floor(Math.random()*3)+1
 
-
-
-/*
-function game (){
-    let score = 0
-    if (playerChoice === "paper" && computerChoice ==="rock"){
-        console.log(++score)
-    }else if(playerChoice === "scissors" && computerChoice === "paper"){
-        console.log(++score)
-    }else if (playerChoice === "rock" && computerChoice ==="scissors"){
-        console.log(++score)
+    switch(randomNum){
+        case 1:
+            computer = "ROCK"
+            break
+        case 2:
+            computer = "PAPER"
+            break 
+        case 3:
+            computer = "SCISSORS"
+            break       
     }
-
-return score
 }
 
-game()*/
+function checkWinner(){
+    if (player == computer){
+        return "Draw!"
+    }
+    else if(computer == "ROCK"){
+        return(player =="PAPER") ? "you win": "you lose"
+    }
+    else if(computer == "PAPER"){
+        return (player == "SCISSORS")? "You win":"you lose"
+    }
+    else if(computer == "SCISSORS"){
+        return(player == "ROCK")? "you win":"you lose"
+    }
+    
+}
