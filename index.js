@@ -1,49 +1,56 @@
-const playerText=document.querySelector("#playerText")
-const computerText=document.querySelector("#computerText")
-const resultText=document.querySelector("#resultText")
-const choiceBtns=document.querySelectorAll(".choiceBtn")
+const computerChoiceDisplay = document.getElementById("computer-choice");//no need for #cuz your using getelementbyid
+const userChoiceDisplay =document.getElementById("user-choice");
+const resultDisplay = document.getElementById("result")
+const possiblChoices = document.querySelectorAll("button")
+let userChoice;
+let computerChoice;
+let compScore=0
+let yourScore=0
 
-let player;
-let computer;
-let result;
-choiceBtns.forEach(button => {button.addEventListener("click",()=>{
-    player = button.textContent
-    computerTurn()
-    playerText.textContent=`player : ${player}`
-    computerText.textContent=`computer: ${computer}`
-    resultText.textContent=checkWinner()
-})
-    
-});
+possiblChoices.forEach(possiblChoice =>possiblChoice.addEventListener("click",(e)=>{
+    userChoice= e.target.id
+    userChoiceDisplay.innerHTML = userChoice
+    generateComputerChoice()
+    resultDisplay.innerHTML = checkWinner()
+   
+}))
 
-function computerTurn(){
-    const randomNum= Math.floor(Math.random()*3)+1
+function generateComputerChoice(){
+    randNum=Math.floor(Math.random()* 3)+1
+    console.log(randNum)
 
-    switch(randomNum){
+    switch(randNum){
         case 1:
-            computer = "ROCK"
+            computerChoice = "rock"
             break
         case 2:
-            computer = "PAPER"
-            break 
+            computerChoice = "paper"
+            break
         case 3:
-            computer = "SCISSORS"
-            break       
+            computerChoice = "scissors"
+            break
+
     }
+
+    computerChoiceDisplay.innerHTML = computerChoice
 }
 
 function checkWinner(){
-    if (player == computer){
+    let compScore=0
+    let yourScore=0
+    if (computerChoice == userChoice){
         return "Draw!"
+    }else if(computerChoice === "paper" && userChoice === "rock"){
+        compScore+=1
+        return `computer wins ! score : ${compScore }`
+    }else if( computerChoice === "scissors"&& userChoice ==="paper"){
+        compScore+=1
+        return `computer wins ! score : ${compScore}`
+    }else if(computerChoice === "rock" && userChoice === "scissors"){
+        compScore+=1
+        return `computer wins ! score : ${compScore}`
+    }else{
+        yourScore+=1
+        return `you win ! score : ${yourScore}`
     }
-    else if(computer == "ROCK"){
-        return(player =="PAPER") ? "you win": "you lose"
-    }
-    else if(computer == "PAPER"){
-        return (player == "SCISSORS")? "You win":"you lose"
-    }
-    else if(computer == "SCISSORS"){
-        return(player == "ROCK")? "you win":"you lose"
-    }
-    
 }

@@ -4,19 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rockpaper</title>
+    <link rel="stylesheet" href="style.css">
    
 </head>
 <body>
-    <script src="index.js"></script>
-    <div id="gamediv">
-       <h1 class="gametext" id="playerText">Player: </h1>
-       <h1 class="gameText" id="computerText">computer: </h1>
-       <h1 class="gameText" id="resultText">result: </h1>
-       <button class="choiceBtn">ROCK</button>
-       <button class="choiceBtn">PAPER</button>
-       <button class="choiceBtn">SCISSORS</button>
-    </div>
-   
+    <div class="game">
+    <h2>COMPUTER CHOICE: <span id="computer-choice"></span></h2>
+    <h2>YOUR CHOICE: <span id="user-choice"></span></h2>
+    <h2>RESULT: <span id="result"></span></h2>
+    <button id="rock">rock</button>
+    <button id="paper">paper</button>
+    <button id="scissors">scissors</button>
+
+</div>
+    
+  <script src="index.js" charset="UTF-8"></script> 
     
 </body>
 </html>
